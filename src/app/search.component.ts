@@ -20,7 +20,7 @@ export class SearchComponent{
       if(that.database)
       that.imageArray = result.data.ImageNames
       else
-        that.imageArray = result.data;
+        that.imageArray = result;
 
     })
   }

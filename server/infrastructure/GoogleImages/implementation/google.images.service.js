@@ -44,19 +44,13 @@ var GoogleImagesService = /** @class */ (function () {
                             console.log(error);
                         }));
                     });
-                    return Promise.all(promises).then(function () {
-                        return { "data": res, "names": imageNames };
-                    }, function (error) {
-                        console.log(error);
-                    });
-                });
-                promise_1 = promise_1.then(function (value) {
-                    scrap.ImageTitle = keyword;
-                    scrap.ImageNames = value.names;
-                    return scrap.save().then(function () {
-                        return { data: value.data, database: false };
-                    }, function (error) {
-                        console.log(error);
+                    return new Promise(function (resolve, reject) {
+                        Promise.all(promises).then(function () {
+                            scrap.ImageTitle = keyword;
+                            scrap.ImageNames = imageNames;
+                            scrap.save();
+                        });
+                        resolve(res);
                     });
                 });
                 return promise_1;

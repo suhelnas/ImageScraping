@@ -11,7 +11,6 @@ export interface IGoogleImagesService{
 export class GoogleImagesService implements IGoogleImagesService{
   getImages(keyword):Promise<any>{
     let that = this;
-
     let scrapModel=  ScrapImageModel.scrapModel();
     let scrap = new scrapModel();
     let promise = scrapModel.find().where('ImageTitle').equals(keyword)
@@ -46,23 +45,16 @@ export class GoogleImagesService implements IGoogleImagesService{
             })
           );
           });
-           return Promise.all(promises).then(function () {
-            return {"data":res,"names":imageNames};
-           },function (error) {
-             console.log(error);
+           return new Promise((resolve, reject) => {
+             Promise.all(promises).then(function () {
+               scrap.ImageTitle = keyword
+               scrap.ImageNames=imageNames;
+               scrap.save();
+             });
+             resolve(res)
            })
 
         });
-
-        promise = promise.then(function (value) {
-          scrap.ImageTitle = keyword
-          scrap.ImageNames=value.names;
-          return scrap.save().then(function () {
-            return {data:value.data,database:false};
-          },function (error) {
-            console.log(error);
-          });
-        })
         return promise;
       }
     },function (error) {

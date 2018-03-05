@@ -9,7 +9,7 @@ require('dotenv').config();
 
 let mediaBaseDir = process.env.mediaBasePath;
 let app = express();
-global['dbConn']= mongoose.createConnection('mongodb://suhelnas:Suhel12$@ds155278.mlab.com:55278/zillionscrap')
+global['dbConn']= mongoose.createConnection('mongodb://suhelnas:Suhel123@ds155278.mlab.com:55278/zillionscrap')
 if(global['dbConn']) {
   console.log("connection created");
   new ScrapImageModel();

@@ -2,12 +2,13 @@
   <h3> Searched Keywords</h3>
   <table class="table table-hover table-striped">
     <thead>
-    <th> Keywords</th>
+    <th></th>
     </thead>
     <tbody>
     <tr *ngFor="let c of keywords">
       <td (click)="getKeywordImages(c.ImageTitle)">{{c.ImageTitle}}</td>
     </tr>
+    <tr *ngIf="!keywords">No Keywords searched</tr>
     </tbody>
   </table>
 </div>

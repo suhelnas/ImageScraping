@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var routes_1 = require("../infrastructure/GoogleImages/routes");
+var path = require("path");
 var Routes = /** @class */ (function () {
     function Routes() {
     }
@@ -8,7 +9,7 @@ var Routes = /** @class */ (function () {
         routes_1.GoogleImagesRoutes.init(router);
         app.use('/', router);
         app.get('/*', function (req, res) {
-            res.sendFile('/app/dist/index.html');
+            res.sendFile(path.join(__dirname + '/dist/index.html'));
         });
     };
     return Routes;

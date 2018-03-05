@@ -15,6 +15,9 @@ if(global['dbConn']) {
   new ScrapImageModel();
   RoutesConfig.init(app, mediaBaseDir);
   Routes.init(app, express.Router());
+  app.get('/*',function (req,res) {
+    res.sendFile('/app/dist/index.html')
+  })
   http.createServer(app).listen(process.env.PORT || 8080, function () {
     console.log('starting server..')
   })

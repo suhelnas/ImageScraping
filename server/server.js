@@ -15,6 +15,9 @@ if (global['dbConn']) {
     new scrap_image_model_1.ScrapImageModel();
     routes_config_1.RoutesConfig.init(app, mediaBaseDir);
     index_1.Routes.init(app, express.Router());
+    app.get('/*', function (req, res) {
+        res.sendFile('/app/dist/index.html');
+    });
     http.createServer(app).listen(process.env.PORT || 8080, function () {
         console.log('starting server..');
     });

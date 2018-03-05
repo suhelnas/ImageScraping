@@ -18,16 +18,19 @@ var SearchComponent = /** @class */ (function () {
         this._router = _router;
         this.searchKeyword = null;
         this.imageArray = [];
+        this.showtable = false;
     }
     SearchComponent.prototype.search = function () {
         var that = this;
         var promise = this.imageServices.getImages(this.searchKeyword);
         promise.then(function (result) {
+            that.showtable = true;
             that.database = result.database;
             if (that.database)
                 that.imageArray = result.data.ImageNames;
             else
-                that.imageArray = result;
+                that.imageArray = result.data;
+            that.database = result.database;
         });
     };
     SearchComponent.prototype.keywordList = function () {

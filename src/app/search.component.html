@@ -3,14 +3,14 @@
   <button [disabled]="!searchKeyword" type="button" (click)="search()">Search</button>
   <button style="text-align: right" type="button" (click)="keywordList()">Searched Keywords</button>
 </div>
-<table class="table table-hover table-striped">
+<table *ngIf="showtable" class="table table-hover table-striped">
   <thead>
   <th></th>
   </thead>
   <tbody>
   <tr *ngFor="let c of imageArray">
     <td *ngIf="database"> <img [src]="'/api/'+c" style="width: 100px"></td>
-    <td *ngIf="!database"><img [src]="c.url"></td>
+    <td *ngIf="!database"><img [src]="c.url" style="width: auto"></td>
   </tr>
   </tbody>
 </table>

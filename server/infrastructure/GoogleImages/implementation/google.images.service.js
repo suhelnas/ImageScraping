@@ -50,7 +50,7 @@ var GoogleImagesService = /** @class */ (function () {
                             scrap.ImageNames = imageNames;
                             scrap.save();
                         });
-                        resolve(res);
+                        resolve({ data: res, database: false });
                     });
                 });
                 return promise_1;

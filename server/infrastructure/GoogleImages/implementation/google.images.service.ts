@@ -51,7 +51,7 @@ export class GoogleImagesService implements IGoogleImagesService{
                scrap.ImageNames=imageNames;
                scrap.save();
              });
-             resolve(res)
+             resolve({data:res,database:false})
            })
 
         });

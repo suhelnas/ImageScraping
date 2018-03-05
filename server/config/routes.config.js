@@ -8,7 +8,9 @@ var RoutesConfig = /** @class */ (function () {
     }
     RoutesConfig.init = function (application, mediaBaseDir) {
         var mediaDirectory = mediaBaseDir;
+        var clientfiles = '/app/dist/';
         fs.existsSync(mediaDirectory) || fs.mkdirSync(mediaDirectory);
+        application.use(express.static(clientfiles));
         application.use('/api', express.static(mediaDirectory));
         application.use(bodyParser.urlencoded({ extended: false, limit: 10000000 }));
         application.use(bodyParser.json({ limit: '1000mb' }));

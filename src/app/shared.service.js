@@ -13,7 +13,7 @@ var core_1 = require("@angular/core");
 var BehaviorSubject_1 = require("rxjs/BehaviorSubject");
 var SharedService = /** @class */ (function () {
     function SharedService() {
-        this.messageSource = new BehaviorSubject_1.BehaviorSubject("default message");
+        this.messageSource = new BehaviorSubject_1.BehaviorSubject("");
         this.currentMessage = this.messageSource.asObservable();
     }
     SharedService.prototype.changeMessage = function (message) {

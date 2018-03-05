@@ -37,7 +37,7 @@ var GoogleImagesService = /** @class */ (function () {
                             imageNames.push(file);
                             image
                                 .resize(Jimp.AUTO, 250) // resize
-                                .quality(60) // set JPEG quality
+                                .quality(60)
                                 .greyscale()
                                 .write(process.env.mediaBasePath + '/' + file);
                         }, function (error) {

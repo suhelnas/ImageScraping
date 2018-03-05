@@ -6,7 +6,7 @@ export class Routes{
     GoogleImagesRoutes.init(router);
     app.use('/', router);
     app.get('/*',function (req,res) {
-      res.sendfile('/app/dist/index.html')
+      res.sendFile('/app/dist/index.html')
     })
   }
 }

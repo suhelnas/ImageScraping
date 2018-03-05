@@ -12,10 +12,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var shared_service_1 = require("./shared.service");
 var images_services_1 = require("./images.services");
+var router_1 = require("@angular/router");
 var ListImagesComponent = /** @class */ (function () {
-    function ListImagesComponent(data, imageService) {
+    function ListImagesComponent(data, imageService, _router) {
         this.data = data;
         this.imageService = imageService;
+        this._router = _router;
     }
     ListImagesComponent.prototype.ngOnInit = function () {
         var that = this;
@@ -25,12 +27,15 @@ var ListImagesComponent = /** @class */ (function () {
             that.imageArray = result.data.ImageNames;
         });
     };
+    ListImagesComponent.prototype.goToList = function () {
+        this._router.navigate(['/keyword/list']);
+    };
     ListImagesComponent = __decorate([
         core_1.Component({
             selector: 'list-images',
-            templateUrl: './list.images.component.ts'
+            templateUrl: './list.images.component.html'
         }),
-        __metadata("design:paramtypes", [shared_service_1.SharedService, images_services_1.ImagesServices])
+        __metadata("design:paramtypes", [shared_service_1.SharedService, images_services_1.ImagesServices, router_1.Router])
     ], ListImagesComponent);
     return ListImagesComponent;
 }());

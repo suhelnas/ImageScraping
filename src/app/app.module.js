@@ -16,12 +16,12 @@ var http_1 = require("@angular/common/http");
 var forms_1 = require("@angular/forms");
 var list_keywords_component_1 = require("./list.keywords.component");
 var list_images_component_1 = require("./list.images.component");
+var shared_service_1 = require("./shared.service");
 var appRoutes = [{ path: 'app', component: search_component_1.SearchComponent },
     { path: 'images/list', component: list_images_component_1.ListImagesComponent },
     { path: 'keyword/list', component: list_keywords_component_1.ListKeywordsComponent },
     { path: '', redirectTo: '/app', pathMatch: 'full' },
     { path: '**', redirectTo: '/app}', pathMatch: 'full' }];
-var allRoutes = [];
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -31,9 +31,9 @@ var AppModule = /** @class */ (function () {
                 app_component_1.AppComponent, search_component_1.SearchComponent, list_keywords_component_1.ListKeywordsComponent, list_images_component_1.ListImagesComponent
             ],
             imports: [
-                platform_browser_1.BrowserModule, router_1.RouterModule.forRoot(allRoutes), forms_1.FormsModule, http_1.HttpClientModule
+                platform_browser_1.BrowserModule, router_1.RouterModule.forRoot(appRoutes), forms_1.FormsModule, http_1.HttpClientModule
             ],
-            providers: [images_services_1.ImagesServices],
+            providers: [images_services_1.ImagesServices, shared_service_1.SharedService],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);

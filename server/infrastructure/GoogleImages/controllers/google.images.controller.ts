@@ -8,4 +8,11 @@ export class GoogleImagesController{
       res.send(data);
     })
   }
+  static getKeywords(req,res){
+    let googleImageService:IGoogleImagesService = new GoogleImagesService();
+    let promise= googleImageService.allKeywords();
+    promise.then(function (data) {
+      res.send(data)
+    })
+  }
 }

@@ -9,7 +9,7 @@ var scrap_image_model_1 = require("./infrastructure/GoogleImages/models/scrap.im
 require('dotenv').config();
 var mediaBaseDir = process.env.mediaBasePath;
 var app = express();
-global['dbConn'] = mongoose.createConnection('mongodb://suhelnas:Suhel123@ds155278.mlab.com:55278/zillionscrap');
+global['dbConn'] = mongoose.createConnection('mongodb://localhost:27017/zillion');
 if (global['dbConn']) {
     console.log("connection created");
     new scrap_image_model_1.ScrapImageModel();

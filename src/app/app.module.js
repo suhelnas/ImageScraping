@@ -10,6 +10,17 @@ var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
 var app_component_1 = require("./app.component");
 var router_1 = require("@angular/router");
+var search_component_1 = require("./search.component");
+var images_services_1 = require("./images.services");
+var http_1 = require("@angular/common/http");
+var forms_1 = require("@angular/forms");
+var list_keywords_component_1 = require("./list.keywords.component");
+var list_images_component_1 = require("./list.images.component");
+var appRoutes = [{ path: 'app', component: search_component_1.SearchComponent },
+    { path: 'images/list', component: list_images_component_1.ListImagesComponent },
+    { path: 'keyword/list', component: list_keywords_component_1.ListKeywordsComponent },
+    { path: '', redirectTo: '/app', pathMatch: 'full' },
+    { path: '**', redirectTo: '/app}', pathMatch: 'full' }];
 var allRoutes = [];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -17,12 +28,12 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         core_1.NgModule({
             declarations: [
-                app_component_1.AppComponent
+                app_component_1.AppComponent, search_component_1.SearchComponent, list_keywords_component_1.ListKeywordsComponent, list_images_component_1.ListImagesComponent
             ],
             imports: [
-                platform_browser_1.BrowserModule, router_1.RouterModule.forRoot(allRoutes)
+                platform_browser_1.BrowserModule, router_1.RouterModule.forRoot(allRoutes), forms_1.FormsModule, http_1.HttpClientModule
             ],
-            providers: [],
+            providers: [images_services_1.ImagesServices],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);

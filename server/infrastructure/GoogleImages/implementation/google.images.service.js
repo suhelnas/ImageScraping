@@ -17,7 +17,7 @@ var GoogleImagesService = /** @class */ (function () {
         promise = promise.then(function (data) {
             if (data && data.length > 0) {
                 return new Promise(function (resolve, reject) {
-                    resolve({ data: data, database: true });
+                    resolve({ data: data[0], database: true });
                 });
             }
             else {
@@ -65,6 +65,13 @@ var GoogleImagesService = /** @class */ (function () {
             console.log(error);
         });
         return promise;
+    };
+    GoogleImagesService.prototype.allKeywords = function () {
+        var scrapModel = scrap_image_model_1.ScrapImageModel.scrapModel();
+        var scrap = new scrapModel();
+        return scrapModel.find().then(function (data) {
+            return data;
+        });
     };
     return GoogleImagesService;
 }());

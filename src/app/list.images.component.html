@@ -1,0 +1,14 @@
+<div class="clearfix">
+  <button (click)="goToList()">KeyWord List</button>
+  <table class="table table-hover table-striped">
+    <thead>
+    <th></th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let c of imageArray,index">
+      <td *ngIf="!database"> <img [src]="'/api/'+c" style="width: 100px"></td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

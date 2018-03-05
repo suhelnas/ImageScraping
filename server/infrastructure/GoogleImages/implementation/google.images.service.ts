@@ -5,7 +5,8 @@ import * as Jimp from 'jimp'
 import {ScrapImageModel} from '../models/scrap.image.model';
 require('dotenv').config();
 export interface IGoogleImagesService{
-  getImages(keyword):Promise<any>
+  getImages(keyword):Promise<any>;
+  allKeywords():Promise<any>;
 }
 export class GoogleImagesService implements IGoogleImagesService{
   getImages(keyword):Promise<any>{
@@ -17,7 +18,7 @@ export class GoogleImagesService implements IGoogleImagesService{
     promise = promise.then(function(data){
       if(data&& data.length>0){
         return new Promise((resolve, reject) => {
-          resolve ({data:data,database:true});
+          resolve ({data:data[0],database:true});
         })
       }
       else{
@@ -37,7 +38,7 @@ export class GoogleImagesService implements IGoogleImagesService{
               imageNames.push(file);
               image
                 .resize(Jimp.AUTO, 250)            // resize
-                .quality(60)                 // set JPEG quality
+                .quality(60)
                 .greyscale()
                 .write(process.env.mediaBasePath+'/'+file)
             },function (error) {
@@ -68,7 +69,14 @@ export class GoogleImagesService implements IGoogleImagesService{
       console.log(error);
     });
     return promise;
-
+  }
+  allKeywords():Promise<any>{
+    let scrapModel=  ScrapImageModel.scrapModel();
+    let scrap = new scrapModel();
+    return scrapModel.find().then(function (data) {
+      return data;
+    })
 
   }
+
 }

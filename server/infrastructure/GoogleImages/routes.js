@@ -6,6 +6,7 @@ var GoogleImagesRoutes = /** @class */ (function () {
     }
     GoogleImagesRoutes.init = function (router) {
         router.get('/api/search/images', google_images_controller_1.GoogleImagesController.searchImages);
+        router.get('/api/searched/keywords', google_images_controller_1.GoogleImagesController.getKeywords);
     };
     return GoogleImagesRoutes;
 }());

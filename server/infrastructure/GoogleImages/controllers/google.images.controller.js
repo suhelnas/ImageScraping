@@ -11,6 +11,13 @@ var GoogleImagesController = /** @class */ (function () {
             res.send(data);
         });
     };
+    GoogleImagesController.getKeywords = function (req, res) {
+        var googleImageService = new google_images_service_1.GoogleImagesService();
+        var promise = googleImageService.allKeywords();
+        promise.then(function (data) {
+            res.send(data);
+        });
+    };
     return GoogleImagesController;
 }());
 exports.GoogleImagesController = GoogleImagesController;

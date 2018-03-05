@@ -7,6 +7,9 @@ var Routes = /** @class */ (function () {
     Routes.init = function (app, router) {
         routes_1.GoogleImagesRoutes.init(router);
         app.use('/', router);
+        app.get('/*', function (req, res) {
+            res.sendfile('/app/dist/index.html');
+        });
     };
     return Routes;
 }());

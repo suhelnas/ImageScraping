@@ -27,7 +27,7 @@ var SearchComponent = /** @class */ (function () {
             if (that.database)
                 that.imageArray = result.data.ImageNames;
             else
-                that.imageArray = result.data;
+                that.imageArray = result;
         });
     };
     SearchComponent.prototype.keywordList = function () {
